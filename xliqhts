@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+
+        let container = document.createElement('div');
+        container.style = 'display: flex; justify-content: center; align-items: center; height: 98vh; margin: 0';
+
+        let reg = document.createElement('div');
+        reg.id = 'reg';
+        reg.style = 'display: flex; flex-direction: column; align-items: center; text-align: center; width: 700px; height: 495px; color: #fff;';
+
+        let heading = document.createElement('h1');
+        heading.style = 'font-family: Poppins, sans-serif; font-weight: bold; color: #000; margin-bottom: 0;'
+
+        let title = document.createElement('span');
+        title.innerText = 'Registration Form';
+        heading.append(title)
+
+
+        let text = document.createElement('h2');
+        text.style = 'font-family: Poppins, sans-serif; font-size: 18px; color: #000;';
+
+        let span1 = document.createElement('span');
+        span1.style.margin = '0 10px';
+
+        let span2 = document.createElement('span');
+        span2.style.margin = '0 10px';
+
+        let span3 = document.createElement('span');
+        span3.style.margin = '0 10px';
+
+        span1.innerText = 'First name';
+        span2.innerText = 'Middle name';
+        span3.innerText = 'Last name';
+
+        text.append(span1);
+        text.append(span2);
+        text.append(span3);
+
+        let input1 = document.createElement('input');
+        input1.placeholder = 'First Name';
+        input1.style = 'width: 200px; margin-bottom: 10px; padding: 8px 10px';
+
+        let input2 = document.createElement('input');
+        input2.placeholder = 'Middle Name' ;
+        input2.style = 'width: 200px; margin-bottom: 10px; padding: 8px 10px';
+
+        let input3 = document.createElement('input');
+        input3.placeholder = 'Last Name';
+        input3.style = 'width: 200px; margin-bottom: 10px; padding: 8px 10px';
+
+
+        input1.addEventListener('input', function(event){
+            span1.innerText = event.target.value
+        });
+
+        input2.addEventListener('input', function(event){
+            span2.innerText = event.target.value
+        });
+
+        input3.addEventListener('input', function(event){
+            span3.innerText = event.target.value
+        });
+        
+
+        let emailInput = document.createElement('input');
+        emailInput.placeholder = 'Email';
+        emailInput.style = 'width: 200px; margin-bottom: 10px; padding: 8px 10px';
+        emailInput.required = true;
+
+        let passwordInput = document.createElement('input');
+        passwordInput.placeholder = 'Password';
+        passwordInput.style = 'width: 200px; margin-bottom: 10px; padding: 8px 10px';
+        passwordInput.type = 'password';
+        passwordInput.required = true;
+
+        let passwordConfirmationInput = document.createElement('input');
+        passwordConfirmationInput.placeholder = 'Confirm Password';
+        passwordConfirmationInput.style = 'width: 200px; margin-bottom: 10px; padding: 8px 10px';
+        passwordConfirmationInput.type = 'password';
+        passwordConfirmationInput.required = true;
+
+        let emailWarning = document.createElement('p');
+        emailWarning.style = 'color: red; display: none;';
+
+        let passwordWarning = document.createElement('p');
+        passwordWarning.style = 'color: red; display: none';
+
+        let passwordMatchWarning = document.createElement('p');
+        passwordMatchWarning.style.color = 'red';
+        passwordMatchWarning.style.display = 'none'; // Initially hidden
+
+        emailInput.addEventListener('input', function(event) {
+            if (!emailInput.checkValidity()) {
+                emailWarning.innerText = 'Invalid email address';
+                emailWarning.style.display = 'block';
+            } else {
+                emailWarning.style.display = 'none';
+            }
+        });
+
+        passwordInput.addEventListener('input', function(event) {
+            if (!passwordInput.checkValidity()) {
+                passwordWarning.innerText = 'Password must be at least 8 characters';
+                passwordWarning.style.display = 'block';
+                passwordWarning.style.marginTop = '2px';
+                passwordWarning.style.marginBottom = '10px';
+            } else {
+                passwordWarning.style.display = 'none';
+            }
+        });
+
+        passwordConfirmationInput.addEventListener('input', function(event) {
+            if (passwordConfirmationInput.value !== passwordInput.value) {
+                passwordMatchWarning.innerText = 'Passwords do not match';
+                passwordMatchWarning.style.display = 'block';
+                passwordMatchWarning.style.marginTop = '2px';
+                passwordMatchWarning.style.marginBottom = '10px';
+            } else {
+                passwordMatchWarning.style.display = 'none';
+            }
+        });
+
+        reg.append(heading);
+        reg.append(text);
+        reg.append(input1);
+        reg.append(input2);
+        reg.append(input3);
+        reg.append(emailInput);
+        reg.append(emailWarning);
+        reg.append(passwordInput);
+        reg.append(passwordWarning);
+        reg.append(passwordConfirmationInput);
+        reg.append(passwordMatchWarning);
+        container.appendChild(reg);
+        document.body.appendChild(container);
+
+    </script>  
+</body>
+</html>
